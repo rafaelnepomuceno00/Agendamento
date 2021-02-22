@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-secondary">
+    <header>
+        <nav class="navbar navbar-light bg-dark justify-content-center">
+
+            <h1 class="font-weight-bolder text-light">
+                Agendamento Médico
+            </h1>
+
+        </nav>
+    </header>
+    <div class="container-fluid">
+
+        <form>
+
+            <div class="form-row mt-3 ">
+
+                <div class="form-group col-md-6 text-center">
+                    <label for="nome" class="font-weight-bold"> Nome</label>
+                    <input required type="text" class="form-control rounded-pill alert-secondary" id="nome"
+                        placeholder="Nome">
+                </div>
+                <div class="form-group col-md-6 text-center">
+                    <label for="resumo" class="font-weight-bold">Resumo</label>
+                    <input required type="text" class="form-control rounded-pill alert-secondary" id="resumo"
+                        placeholder="O que está acontecendo?">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6 text-center">
+                    <label for="inputMedico" class="font-weight-bold"> Médico</label>
+                    <select required id="inputMedico" class="form-control rounded-pill ">
+
+                        <option selected disabled>Selecione...</option>
+
+                    </select>
+                </div>
+                <div class="form-group col-md-2 text-center">
+                    <label for="telefone" class="font-weight-bold">Telefone</label>
+                    <input required type="number" class="form-control rounded-pill " name="telefone" id="telefone"
+                        placeholder="(XX) XXXXX-XXXXX">
+
+                </div>
+                <div class="form-group col-md-2 text-center">
+                    <label for="inputHorario" class="font-weight-bold">Horários</label>
+                    <select required id="inputHorario" class="form-control rounded-pill ">
+
+                        <option selected disabled>Selecione um Médico </option>
+
+
+                    </select>
+                </div>
+                <div class="form-group col-md-2 text-center">
+                    <label for="inputSexo" class="font-weight-bold">Sexo</label>
+                    <select required id="inputSexo" class="form-control rounded-pill ">
+                        <option selected disabled>Selecione... </option>
+                        <option value="M"> Masculino </option>
+                        <option value="F">Feminio </option>
+                        <option value="N/I"> Prefiro não falar </option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button id="btnAgendar" type="button" class="btn btn-info btn-lg btn-block">Agendar</button>
+            </div>
+        </form>
+
+        <hr>
+        <div class="text-center">
+            <h1 class="font-weight-bolder text-light mb-3">
+                Agendamentos Marcados
+            </h1>
+        </div>
+        <table class="table table-bordered table-hover table  table-primary ">
+            <thead class="thead-dark">
+                <tr class="text-center">
+                    <th style="width: 25px;">Horário</th>
+                    <th>Nome</th>
+                    <th>Médico</th>
+                    <th style="width: 200px;">Telefone</th>
+                    <th style="width: 25px;">Sexo</th>
+                    <th>Resumo</th>
+                    <th style="width: 25px;">Excluir</th>
+                </tr>
+            </thead>
+            <tbody id='tableBody'>
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
