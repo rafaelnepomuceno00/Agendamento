@@ -40,7 +40,7 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-6 text-center">
+                <div class="form-group col-md-6 col-sm-6 text-center">
                     <label for="inputMedico" class="font-weight-bold"> Médico</label>
                     <select required id="inputMedico" class="form-control rounded-pill ">
 
@@ -48,13 +48,13 @@
 
                     </select>
                 </div>
-                <div class="form-group col-md-2 text-center">
+                <div class="form-group col-md-2 col-sm-6 text-center">
                     <label for="telefone" class="font-weight-bold">Telefone</label>
                     <input required type="number" class="form-control rounded-pill " name="telefone" id="telefone"
                         placeholder="(XX) XXXXX-XXXXX">
 
                 </div>
-                <div class="form-group col-md-2 text-center">
+                <div class="form-group col-md-2 col-sm-6 text-center">
                     <label for="inputHorario" class="font-weight-bold">Horários</label>
                     <select required id="inputHorario" class="form-control rounded-pill ">
 
@@ -63,7 +63,7 @@
 
                     </select>
                 </div>
-                <div class="form-group col-md-2 text-center">
+                <div class="form-group col-md-2 col-sm-6 text-center">
                     <label for="inputSexo" class="font-weight-bold">Sexo</label>
                     <select required id="inputSexo" class="form-control rounded-pill ">
                         <option selected disabled>Selecione... </option>
@@ -76,7 +76,7 @@
             </div>
 
             <div class="d-flex justify-content-center">
-                <button id="btnAgendar" type="button" class="btn btn-info btn-lg btn-block">Agendar</button>
+                <button id="btnAgendar" type="submit" class="btn btn-info btn-lg btn-block">Agendar</button>
             </div>
         </form>
 
@@ -86,7 +86,7 @@
                 Agendamentos Marcados
             </h1>
         </div>
-        <table class="table table-bordered table-hover table  table-primary ">
+        <table class="table table-bordered table-hover table  table-primary table-responsive-lg table-responsive-sm table-responsive-md">
             <thead class="thead-dark">
                 <tr class="text-center">
                     <th style="width: 25px;">Horário</th>

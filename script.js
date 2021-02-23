@@ -7,7 +7,6 @@ const inputSexo = document.getElementById('inputSexo')
 const btnAgendar = document.getElementById('btnAgendar')
 const tableBody = document.getElementById('tableBody')
 
-
 let medicos = [
     {
         nome: 'Maria Clara',
@@ -30,24 +29,9 @@ let medicos = [
         horarios: ['8:00', '8:30', '9:00', '9:30', '10:00', '10:30', '11:00', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00']
     },
 ]
-let agendamentos = [
-    {
-        horario: '09:00',
-        nome: 'Rafael Nepomuceno',
-        medico: 'Willian Silva - Ortopedista',
-        telefone: '38991624199',
-        sexo: 'M',
-        resumo: 'Dor de Barriga'
-    },
-    {
-        horario: '15:30',
-        nome: 'Clara',
-        medico: 'Maria Clara - Psiquiatra',
-        telefone: '3899162645645',
-        sexo: 'F',
-        resumo: 'Ansiedade'
-    }
-]
+
+let agendamentos = JSON.parse(localStorage.getItem('agendamentossalvos')) || []
+
 carregarMedicos(medicos)
 
 function carregarMedicos(med) {
@@ -59,16 +43,15 @@ function carregarMedicos(med) {
 
         inputMedico.appendChild(opcao)
     })
-
 }
+
 inputMedico.addEventListener('click', () => {
     let medico = inputMedico.value
-    console.log(medico)
-    console.log(carregarHorarios(medico))
+    carregarHorarios(medico)
 })
 
 function carregarHorarios(medico) {
-    let medc = medicos.find(function (item) {
+    let medc = medicos.find(item => {
         return medico.includes(item.especialidade)
 
     })
@@ -94,6 +77,7 @@ function carregarAgendamentos(agendamentos) {
         let btnColItem = document.createElement('td')
         let btnItem = document.createElement('button')
 
+
         hrItem.innerText = agendamento.horario
         nmItem.innerText = agendamento.nome
         medItem.innerText = agendamento.medico
@@ -102,6 +86,7 @@ function carregarAgendamentos(agendamentos) {
         resItem.innerText = agendamento.resumo
         btnItem.innerText = 'Excluir'
         btnItem.setAttribute('class', 'btn btn-danger')
+        btnItem.setAttribute('id', agendamento.id)
 
         btnColItem.appendChild(btnItem)
 
@@ -117,23 +102,31 @@ function carregarAgendamentos(agendamentos) {
 
     })
     const btnexcluir = document.querySelectorAll('#tableBody  button')
-    btnexcluir.forEach(item=>{
-        item.addEventListener('click', function(){
-            console.log(item.parentElement.parentElement)
-            console.log(item)
+    btnexcluir.forEach(item => {
+        item.addEventListener('click', function () {
+
+            removeritem(item.id)
         })
     })
 }
 
 function agendar() {
+    let id = Date.now()
     let nome = inputNome.value
     let resumo = inputResumo.value
     let medico = inputMedico.value
     let telefone = inputTel.value
     let horario = inputHorario.value
     let sexo = inputSexo.value
-
-    novoAgendamento = {
+    if (nome === '' ||
+        resumo === '' ||
+        medico === 'Selecione...'||
+        sexo ==='Selecione...'||
+        telefone == ''
+        ) {
+        return false
+    }else{    novoAgendamento = {
+        id,
         horario,
         nome,
         medico,
@@ -141,20 +134,33 @@ function agendar() {
         sexo,
         resumo
     }
-    agendamentos.push(novoAgendamento)
-    carregarAgendamentos(agendamentos)
-}
 
-function removeritem(posicao) {
-    agendamentos.splice(posicao,1)
-    carregarAgendamentos()
+    agendamentos.push(novoAgendamento)
+    salvarLocalmente()
+    carregarAgendamentos(agendamentos)
+}}
+
+
+function removeritem(id) {
+    let ItemaRemover = agendamentos.find(item => {
+
+        return item.id == id
+
+    })
+    agendamentos.splice(agendamentos.indexOf(ItemaRemover), 1)
+    salvarLocalmente()
+    carregarAgendamentos(agendamentos)
 }
 
 btnAgendar.addEventListener('click', () => {
     agendar()
+    carregarAgendamentos(agendamentos)
 })
-carregarAgendamentos(agendamentos)
+
+agendamentos == [] ?  console.log('vazio') :carregarAgendamentos(agendamentos) 
 
 
-
+function salvarLocalmente(){
+    localStorage.setItem('agendamentossalvos', JSON.stringify(agendamentos))
+}
 
