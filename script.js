@@ -45,7 +45,7 @@ let agendamentos = [
         medico: 'Maria Clara - Psiquiatra',
         telefone: '3899162645645',
         sexo: 'F',
-        resumo:'Ansiedade'
+        resumo: 'Ansiedade'
     }
 ]
 carregarMedicos(medicos)
@@ -81,9 +81,9 @@ function carregarHorarios(medico) {
     })
 }
 
-function carregarAgendamentos(agendamentos){
-    tableBody.innerText =''
-    agendamentos.forEach((agendamento)=>{
+function carregarAgendamentos(agendamentos) {
+    tableBody.innerText = ''
+    agendamentos.forEach((agendamento) => {
         let itemTabela = document.createElement('tr')
         let hrItem = document.createElement('td')
         let nmItem = document.createElement('td')
@@ -94,17 +94,17 @@ function carregarAgendamentos(agendamentos){
         let btnColItem = document.createElement('td')
         let btnItem = document.createElement('button')
 
-        hrItem.innerText = agendamento.horario    
-        nmItem.innerText = agendamento.nome    
+        hrItem.innerText = agendamento.horario
+        nmItem.innerText = agendamento.nome
         medItem.innerText = agendamento.medico
-        telItem.innerText = agendamento.telefone    
-        sexItem.innerText = agendamento.sexo    
-        resItem.innerText = agendamento.resumo    
+        telItem.innerText = agendamento.telefone
+        sexItem.innerText = agendamento.sexo
+        resItem.innerText = agendamento.resumo
         btnItem.innerText = 'Excluir'
-        btnItem.setAttribute('class','btn btn-danger')
+        btnItem.setAttribute('class', 'btn btn-danger')
 
         btnColItem.appendChild(btnItem)
-        
+
         itemTabela.appendChild(hrItem)
         itemTabela.appendChild(nmItem)
         itemTabela.appendChild(medItem)
@@ -114,43 +114,47 @@ function carregarAgendamentos(agendamentos){
         itemTabela.appendChild(btnColItem)
 
         tableBody.appendChild(itemTabela)
-    
+
+    })
+    const btnexcluir = document.querySelectorAll('#tableBody  button')
+    btnexcluir.forEach(item=>{
+        item.addEventListener('click', function(){
+            console.log(item.parentElement.parentElement)
+            console.log(item)
+        })
     })
 }
 
-function agendar (){
-    let nome = inputNome.value 
+function agendar() {
+    let nome = inputNome.value
     let resumo = inputResumo.value
     let medico = inputMedico.value
     let telefone = inputTel.value
     let horario = inputHorario.value
-    let sexo= inputSexo.value
+    let sexo = inputSexo.value
 
-   novoAgendamento={
-        horario, 
+    novoAgendamento = {
+        horario,
         nome,
         medico,
-       telefone,
-       sexo,
-       resumo
+        telefone,
+        sexo,
+        resumo
     }
     agendamentos.push(novoAgendamento)
     carregarAgendamentos(agendamentos)
 }
 
 function removeritem(posicao) {
-    agendamentos.splice(posicao, 1)
+    agendamentos.splice(posicao,1)
     carregarAgendamentos()
 }
 
-btnAgendar.addEventListener('click', ()=>{
+btnAgendar.addEventListener('click', () => {
     agendar()
 })
 carregarAgendamentos(agendamentos)
-const btnexcluir = document.querySelectorAll('#tableBody  button')
-btnexcluir.forEach(item=>{
-    item.addEventListener('click', (e, pos) =>{
-        e.stopPropagation
-        removeritem(pos)
-    })
-})
+
+
+
+
